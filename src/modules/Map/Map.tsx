@@ -3,7 +3,11 @@ import { YMaps, Placemark } from "react-yandex-maps";
 import { mainApi } from "../../api/servises";
 
 export const Map = () => {
-  const { data } = mainApi.useGetPointsQuery();
+  const { data, isLoading } = mainApi.useGetPointsQuery();
+
+  if (isLoading) return <>Loading...</>;
+
+  if (!data) return <>Данных нет</>;
 
   return (
     <YMaps>
@@ -18,15 +22,15 @@ export const Map = () => {
               geometry={location.coords}
               options={{
                 preset:
-                  location.type === "склад"
+                  location.type === "warehouse"
                     ? "islands#blueCircleDotIcon"
                     : "islands#redCircleDotIcon",
               }}
               properties={{
                 hintContent:
-                  location.type === "склад" ? "Склад" : "Точка продажи",
+                  location.type === "warehouse" ? "warehouse" : "shop",
                 balloonContent:
-                  location.type === "склад" ? "Это склад" : "Это точка продажи",
+                  location.type === "warehouse" ? "Это warehouse" : "Это shop",
               }}
             />
           ))}
