@@ -1,0 +1,20 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 2px 2px 10px #00000022;
+}
+
+.infoWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productName {
+  font-size: 22px;
+}
