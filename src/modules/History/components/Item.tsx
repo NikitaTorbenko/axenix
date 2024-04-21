@@ -1,27 +1,24 @@
-import styles from "./Info.module.scss";
-import { IoIosArrowDown } from "react-icons/io";
+import styles from "./Item.module.scss";
+import type { IMovements } from "../../../types";
 
-interface IProductItem {
-  product_name: string;
-  product_price: string;
-}
-
-interface Props {
-  place_from: string;
-  place_to: string;
-  transport: string;
-  data: IProductItem[];
-}
-
-export const Item = ({ data, transport, place_from, place_to }: Props) => {
+export const Item = ({ from, to, movements, transport }: IMovements) => {
   return (
     <div className={styles.item}>
-      <div className={styles.infoWrap}>
-        <div className={styles.productName}>{place_from}</div>
-        <div className={styles.productName}>{place_to}</div>
-        <div className={styles.productName}>{transport}</div>
+      <div className={styles.productName}>Точка отправки {from.name}</div>
+      <div className={styles.productName}>Точка получения {to.name}</div>
+      <div className={styles.productName}>Транспорт {transport.id}</div>
+      <div className={styles.productName}>
+        Объем перевозки{transport.volume}
       </div>
-      <IoIosArrowDown />
+      <div className={styles.info}>
+        {movements.map((el) => (
+          <>
+            <div className={styles.productName}>Продукт: {el.batch}</div>
+            <div className={styles.productPrice}>Количество: {el.amount}</div>
+            <div className={styles.productPrice}>Цена: {el.product.name}</div>
+          </>
+        ))}
+      </div>
     </div>
   );
 };

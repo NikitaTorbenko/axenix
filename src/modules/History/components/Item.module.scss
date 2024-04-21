@@ -8,11 +8,14 @@
   box-shadow: 2px 2px 10px #b5707022;
 }
 
-.infoWrap {
+.info {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  border-top: 1px solid lightgray;
+  background-color: #e0e0e0;
 }
 
 .productName {

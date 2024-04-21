@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { IPoint, ISales } from "../../types";
+import type { IPoint, ISales, IMovements } from "../../types";
 
 export const mainApi = createApi({
   reducerPath: "mainApi",
@@ -16,6 +16,12 @@ export const mainApi = createApi({
     getSales: builder.query<ISales[], void>({
       query: () => ({
         url: `/sales`,
+        method: "GET",
+      }),
+    }),
+    getMovements: builder.query<IMovements[], void>({
+      query: () => ({
+        url: `/movements`,
         method: "GET",
       }),
     }),
